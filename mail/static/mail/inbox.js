@@ -1,6 +1,6 @@
 //show_email = document.querySelector("#show_email");
 //emails_view = document.querySelector("#emails-view");
-//let show_email;
+let show_email;
 //let emails_view;
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
   document.querySelector('#compose').addEventListener('click', compose_email);
   document.querySelector('#compose-form').addEventListener('submit', send_mail);
-
+  show_email = document.querySelector("#show_email");
   //on document content load add an event listener to this form to check submit
   // show_email = document.querySelector("#show_email");
    //emails_view = document.querySelector("#emails-view");
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function compose_email() {
-  document.querySelector("#show_email").style.display = 'none';
+    show_email.style.display = 'none';
   document.querySelector("#emails-view").style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
   
@@ -33,7 +33,7 @@ function compose_email() {
 
 function load_mailbox(mailbox) {
   // Show the mailbox and hide other views
-  document.querySelector("#show_email").style.display = 'none';
+    show_email.style.display = 'none';
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
 
@@ -45,7 +45,7 @@ function load_mailbox(mailbox) {
             .then(response => response.json())
         .then(emails => {
             for (let i = 0; i < emails.length; i++) {
-                document.querySelector("#show_email").style.display = 'none';
+                show_email.style.display = 'none';
                     const email_display = document.createElement("div");
                     email_display.setAttribute("id", "email_viewer");
                     //get_id = emails[i].id;
@@ -56,12 +56,12 @@ function load_mailbox(mailbox) {
                     //emails_view.append(email_display);
                     document.querySelector("#emails-view").append(email_display);
                 email_display.addEventListener('click', () => open_email(emails[i].id));
-              if (mailbox === 'index') {
+              /*if (mailbox = 'index') {
                     const archive_btn = document.createElement("button");
-                  archive_btn.setAttribute("class", "btn btn-primary");
+                  archive_btn.setAttribute("class", "btn btn-primary archive");
                     document.querySelector("#emails-view").append(archive_btn);
                email_viewer.addEventListener('click', () => archive(emails[i].id));
-                }
+                }*/
                     //interportlate strings /$
                 }
         });                   
@@ -97,7 +97,6 @@ function open_email(get_id) {
         .then(email => {
             // Print email to show sender, subject line, timestamp
             console.log(email);
-            const show_email = document.createElement("div");
             show_email.setAttribute("id", "show_email");
             show_email.innerHTML = "<label class='view_labels'>From:</label>" + "  " + email.sender +
                 "<br>" + "<label class='view_labels'>To:</label>" + "  " + email.recipients + "<br>" +

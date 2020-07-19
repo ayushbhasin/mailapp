@@ -12,8 +12,15 @@ textarea {
     padding: 10px;
     margin: 5px;
     align-items: center;
+    
 }
 
 .view_labels{
     font-weight: bold;
+}
+
+.archive{
+    position:absolute;
+    right:10px;
+    top:5px;
 }
