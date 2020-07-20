@@ -7,6 +7,6 @@
     "\\mail\\templates",
     "\\mail\\templates\\mail"
   ],
-  "SelectedNode": "\\mail\\static\\mail\\styles.css",
+  "SelectedNode": "\\mail\\views.py",
   "PreviewInSolutionExplorer": false
 }
